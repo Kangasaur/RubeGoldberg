@@ -2,25 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CameraMove : MonoBehaviour
 {
+    CameraPositions camPositions;
     Vector3 camCurrPosition;
-    Vector3 camTargetPosition;
     Vector3 velocity;
     float smoothTime = 1.5f;
 
     void Start()
     {
         camCurrPosition = Camera.main.transform.position;
-        camTargetPosition = Camera.main.transform.position;
+        camPositions = Camera.main.gameObject.GetComponent<CameraPositions>();
     }
 
     void Update()
     {
-        if (camCurrPosition != camTargetPosition)
+        if (camCurrPosition != camPositions.target)
         {
-            Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, camTargetPosition, ref velocity, smoothTime);
-            if (Camera.main.transform.position == camTargetPosition) camCurrPosition = camTargetPosition;
+            Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, camPositions.target, ref velocity, smoothTime);
+            if (Camera.main.transform.position == camPositions.target) camCurrPosition = camPositions.target;
         }
     }
 
@@ -29,7 +30,10 @@ public class CameraMove : MonoBehaviour
         switch(collision.gameObject.name)
         {
             case "Dominooooo":
-                //camTargetPosition = new Vector3(14f, -6f, -10f);
+                if (camPositions.index == 0) camPositions.UpdatePosition();
+                break;
+            case "Marble 2":
+                if (camPositions.index == 1) camPositions.UpdatePosition();
                 break;
         }
     }
