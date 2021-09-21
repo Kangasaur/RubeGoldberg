@@ -35,6 +35,12 @@ public class CameraMove : MonoBehaviour
             case "Marble 2":
                 if (camPositions.index == 1) camPositions.UpdatePosition();
                 break;
+            case "Wheel":
+                if (camPositions.index == 2) camPositions.UpdatePosition();
+                break;
+            case "Domino 2":
+                if (camPositions.index == 3) camPositions.UpdatePosition();
+                break;
         }
     }
 }

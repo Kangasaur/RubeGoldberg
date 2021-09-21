@@ -14,7 +14,9 @@ public class CameraPositions : MonoBehaviour
         {
             new Vector3(0f, 0f, -10f),
             new Vector3(14f, -6f, -10f),
-            new Vector3(7f, -11f, -10f)
+            new Vector3(7f, -11f, -10f),
+            new Vector3(-0.5f, -16f, -10f),
+            new Vector3(-0.5f, -25f, -10f)
         };
         target = positions[index];
     }
