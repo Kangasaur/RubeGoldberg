@@ -34,7 +34,7 @@ public class CameraMove : MonoBehaviour
             case "Pachinko wheel":
                 if (camPositions.index == 5) camPositions.UpdatePosition();
                 break;
-            case "Pachinko circle (51)":
+            case "Pachinko circle (50)":
                 if (camPositions.index == 6) camPositions.UpdatePosition();
                 break;
         }
