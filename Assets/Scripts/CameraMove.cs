@@ -6,23 +6,10 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     CameraPositions camPositions;
-    Vector3 camCurrPosition;
-    Vector3 velocity;
-    float smoothTime = 1.5f;
 
     void Start()
     {
-        camCurrPosition = Camera.main.transform.position;
         camPositions = Camera.main.gameObject.GetComponent<CameraPositions>();
-    }
-
-    void Update()
-    {
-        if (camCurrPosition != camPositions.target)
-        {
-            Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, camPositions.target, ref velocity, smoothTime);
-            if (Camera.main.transform.position == camPositions.target) camCurrPosition = camPositions.target;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,6 +27,15 @@ public class CameraMove : MonoBehaviour
                 break;
             case "Domino 2":
                 if (camPositions.index == 3) camPositions.UpdatePosition();
+                break;
+            case "Small domino (32)":
+                if (camPositions.index == 4) camPositions.UpdatePosition();
+                break;
+            case "Pachinko wheel":
+                if (camPositions.index == 5) camPositions.UpdatePosition();
+                break;
+            case "Pachinko circle (51)":
+                if (camPositions.index == 6) camPositions.UpdatePosition();
                 break;
         }
     }
